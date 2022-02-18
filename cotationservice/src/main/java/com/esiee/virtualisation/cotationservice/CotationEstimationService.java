@@ -1,3 +1,5 @@
+package com.esiee.virtualisation.cotationservice;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,5 +12,10 @@ public class CotationEstimationService {
         int max = 1000000;
         double price =  Math.floor(Math.random()*(max-min+1)+min);
         return String.valueOf(price);
+    }
+
+    @GetMapping("/")
+    public String hello(){
+        return "Hello";
     }
 }
