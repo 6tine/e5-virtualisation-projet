@@ -1,0 +1,20 @@
+<h3>Faire une simulation :</h3>
+
+<form (ngSubmit)="cotation(f)" #f="ngForm">
+  <p>
+    <mat-form-field appearance="outline" class="form-main-field">
+      <mat-label for="location">Localisation : </mat-label>
+      <input matInput placeholder="ex: Paris" type="text" name="location" ngModel>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="outline" class="form-main-field">
+      <mat-label for="nbRooms">Nombre de pièces</mat-label>
+      <input matInput placeholder="ex: 4" type="number" name="nbRooms" ngModel>
+    </mat-form-field>
+  </p>
+  <button mat-flat-button type="submit" color="accent">Simuler le prix du bien</button>
+</form>
+
+<p *ngIf="estimation">Votre bien est estimé à {{estimation}}€</p>

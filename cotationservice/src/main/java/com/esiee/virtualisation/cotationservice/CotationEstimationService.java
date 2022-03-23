@@ -14,7 +14,7 @@ public class CotationEstimationService {
         return String.valueOf(price);
     }
 
-    @GetMapping("/")
+    @GetMapping("/cotation")
     public String hello(){
         return "Hello";
     }
