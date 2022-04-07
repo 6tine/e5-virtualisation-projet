@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {GATEWAY_API_URL, GATEWAY_API_URL2} from "../../app.constants";
 import {catchError, throwError} from "rxjs";
 import {CotationParams} from "../model/cotationParams";
@@ -14,9 +14,11 @@ export class CotationService {
   private COTATION_SERVICE = '/cotation';
   private GET_ESTIMATION = '/estimation';
 
-  private getCotationUrl = GATEWAY_API_URL + this.COTATION_SERVICE + this.GET_ESTIMATION;
+  private getCotationUrl = GATEWAY_API_URL2 + this.COTATION_SERVICE + this.GET_ESTIMATION;
 
   simulerCotation(params: CotationParams){
+    console.log("appel ws : " + this.getCotationUrl)
+    console.log('test')
     return this.http.get(this.getCotationUrl)
       .pipe(
       catchError(this.handleError),

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-gateway-container
-        image: sixtinetvs/virt-proj-api-gateway:1
+        image: sixtinetvs/virt-proj-api-gateway:latest
         imagePullPolicy: Always
 ---
 
@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: cotation-service-container
-          image: sixtinetvs/virt-proj-cotation-service:1
+          image: sixtinetvs/virt-proj-cotation-service:latest
           imagePullPolicy: Always
 ---
 
@@ -67,6 +67,7 @@ spec:
     - name: http
       targetPort: 9090
       port: 80
+      nodePort: 32001
   type: NodePort
   selector:
     app: api-gateway
@@ -95,23 +96,7 @@ spec:
     - name: http
       targetPort: 80
       port: 80
+      nodePort: 32000
   type: NodePort
   selector:
     app: front
----
-
-#apiVersion: extensions/v1beta1
-#kind: Ingress
-#metadata:
-#  name: api-gateway-ingress
-#  annotations:
-#    kubernetes.io/ingress.class: traefik
-#spec:
-#  rules:
-#    - host: api-gateway.localhost
-#      http:
-#        paths:
-#          - path: /
-#            backend:
-#              serviceName: api-gateway-service
-#              servicePort: http
